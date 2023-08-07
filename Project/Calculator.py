@@ -1,4 +1,4 @@
-# definições, cada opção terá um retorno
+# Funções, cada opção terá um retorno
 def soma(a, b):
     return a + b
 
@@ -10,10 +10,11 @@ def multiplicacao(a, b):
 
 def divisao(a, b):
     if b == 0:
+    #se fora do padrão, então:
         return "Erro: divisão por zero não é permitida."
     return a / b
 
-# Função que recebe a operação e os números e realiza o cálculo
+# Função que recebe a operação e os números para realizar o cálculo
 def calcular(operacao, a, b):
     if operacao == "+":
         return soma(a, b)
@@ -26,7 +27,7 @@ def calcular(operacao, a, b):
     else:
         return "Operação inválida."
 
-# Exemplo de uso da calculadora
+# Instruções para uso da calculadora
 if __name__ == "__main__":
     try:
         operacao = input("Digite a operação (+, -, *, /): ")
@@ -35,6 +36,9 @@ if __name__ == "__main__":
 
         resultado = calcular(operacao, numero1, numero2)
 
+# Plot do resultado
         print("Resultado:", resultado)
+
+# Se fora do padrão, então:
     except ValueError:
         print("Valores inválidos. Certifique-se de digitar números válidos.")
