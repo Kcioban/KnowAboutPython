@@ -10,7 +10,7 @@ def multiplicacao(a, b):
 
 def divisao(a, b):
     if b == 0:
-    #se fora do padrão, então:
+        #se fora do padrão, então:
         return "Erro: divisão por zero não é permitida."
     return a / b
 
@@ -31,8 +31,8 @@ def calcular(operacao, a, b):
 if __name__ == "__main__":
     try:
         operacao = input("Digite a operação (+, -, *, /): ")
-        numero1 = float(input("Digite o primeiro número: "))
-        numero2 = float(input("Digite o segundo número: "))
+        numero1  = float(input("Digite o primeiro número: "))
+        numero2  = float(input("Digite o segundo número: "))
 
         resultado = calcular(operacao, numero1, numero2)
 
