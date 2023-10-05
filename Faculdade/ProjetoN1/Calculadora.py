@@ -18,7 +18,8 @@ def calculate():
         entry.delete(0, tk.END)
         entry.insert(0, "Erro!")
 
-# Função para limpar o displaydef clear():
+# Função para limpar o display
+def clear():
     entry.delete(0, tk.END)
 
 # Cria a janela principal
