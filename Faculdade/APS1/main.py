@@ -85,7 +85,7 @@ def limpar_campos():
 janela = tk.Tk()
 janela.title("Cadastro de Clientes")
 janela.resizable(False,False)
-janela.configure(bg="#a9a9a9")
+janela.configure(bg="#767b80")
 
 # Cria variáveis para os campos de entrada
 codigo_entry    = tk.Entry(janela, width=10)
@@ -94,10 +94,10 @@ telefone_entry  = tk.Entry(janela, width=15)
 email_entry     = tk.Entry(janela, width=30)
 
 # Cria rótulos para os campos
-tk.Label(janela, text="Código:").grid(row=0, column=0, padx=10, pady=5)
-tk.Label(janela, text="Nome:").grid(row=1, column=0, padx=10, pady=5)
-tk.Label(janela, text="Telefone:").grid(row=2, column=0, padx=10, pady=5)
-tk.Label(janela, text="Email:").grid(row=3, column=0, padx=10, pady=5)
+tk.Label(janela, text="Código:", font=("Inter", 12, "bold"), foreground="#000000", background="#767b80", anchor="e")    .grid(row=0, column=0, padx=10, pady=5)
+tk.Label(janela, text="Nome:", font=("Inter", 12, "bold"), foreground="#000000", background="#767b80", anchor="e")      .grid(row=1, column=0, padx=10, pady=5)
+tk.Label(janela, text="Telefone:", font=("Inter", 12, "bold"), foreground="#000000", background="#767b80", anchor="e")  .grid(row=2, column=0, padx=10, pady=5)
+tk.Label(janela, text="Email:", font=("Inter", 12, "bold"), foreground="#000000", background="#767b80", anchor="e")     .grid(row=3, column=0, padx=10, pady=5)
 
 # Posiciona os campos de entrada
 codigo_entry.grid(row=0, column=1)
