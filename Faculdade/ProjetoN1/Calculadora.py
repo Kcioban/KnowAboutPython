@@ -1,74 +1,68 @@
-import  tkinter as tk
-from    tkinter import *
+import tkinter as tk
 
-# Função para atualizar o display
-def btn_click(number):
-    current = entry.get()
-    entry.delete(0, tk.END)
-    entry.insert(0, current + str(number))
+botoes_numeros = [(1, 30, 280), (2, 90, 280), (3, 150, 280), (4, 30, 220), (5, 90, 220), (6, 150, 220), (7, 30, 160), (8, 90, 160), (9, 150, 160), (0, 30, 340)]
+botoes_operadores = [("/", 160), ("*", 220), ("-", 280), ("+", 340)]
+calculo = str()
 
-# Função para realizar cálculos
-def calculate():
-    current = entry.get()
-    try:
-        result = eval(current)
-        entry.delete(0, tk.END)
-        entry.insert(0, str(result))
-    except:
-        entry.delete(0, tk.END)
-        entry.insert(0, "Erro!")
+# Funções.
+def adicionar_numero(numero: str):
+    global calculo
+    calculo += numero
+    texto_calculo.config(text=calculo)
 
-# Função para limpar o display
+def adicionar_operador(operador: str):
+    global calculo
+    calculo += operador
+    texto_calculo.config(text=calculo)
+
+def calcular():
+    global calculo
+    resultado = round(eval(calculo), 2)
+    texto_resultado.config(text=resultado)
+    calculo = str(resultado)
+
 def clear():
-    entry.delete(0, tk.END)
+    global calculo
+    calculo = ""  # Defina a variável 'calculo' como uma string vazia
+    texto_calculo.config(text=calculo)
+    texto_resultado.config(text=calculo)
 
-# Cria a janela principal
-window = tk.Tk()
-window.title("Calculadora")
+# Configuração da Janela.
+janela = tk.Tk()
+janela.title("Calculadora")
+janela.geometry("300x430")
+janela.resizable(False, False)
+janela.configure(background="#292c30")
 
-# Criando um widget de entrada para o display
-entry = tk.Entry(window, width=20, font=("Arial", 20))
-entry.grid(row=0, column=0, columnspan=4)
+# Frame da Tela.
+tela = tk.Frame(janela, background="#323538", relief="flat")
+tela.place(x=30, y=40, width=240, height=100)
 
-# Botões de números e operações
-btn_1 = tk.Button(window, text="1", padx=20, pady=20, command=lambda: btn_click(1))
-btn_2 = tk.Button(window, text="2", padx=20, pady=20, command=lambda: btn_click(2))
-btn_3 = tk.Button(window, text="3", padx=20, pady=20, command=lambda: btn_click(3))
-btn_4 = tk.Button(window, text="4", padx=20, pady=20, command=lambda: btn_click(4))
-btn_5 = tk.Button(window, text="5", padx=20, pady=20, command=lambda: btn_click(5))
-btn_6 = tk.Button(window, text="6", padx=20, pady=20, command=lambda: btn_click(6))
-btn_7 = tk.Button(window, text="7", padx=20, pady=20, command=lambda: btn_click(7))
-btn_8 = tk.Button(window, text="8", padx=20, pady=20, command=lambda: btn_click(8))
-btn_9 = tk.Button(window, text="9", padx=20, pady=20, command=lambda: btn_click(9))
-btn_0 = tk.Button(window, text="0", padx=20, pady=20, command=lambda: btn_click(0))
+# Texto do Calculo.
+texto_calculo = tk.Label(tela, text="", font=("arial", 12, "bold"), foreground="#767b80", background="#323538", anchor="e")
+texto_calculo.place(x=20, y=20, width=200)
 
-btn_add     = tk.Button(window, text="+", padx=20, pady=20, command=lambda: btn_click("+"))
-btn_sub     = tk.Button(window, text="-", padx=20, pady=20, command=lambda: btn_click("-"))
-btn_mult    = tk.Button(window, text="*", padx=20, pady=20, command=lambda: btn_click("*"))
-btn_div     = tk.Button(window, text="/", padx=20, pady=20, command=lambda: btn_click("/"))
-btn_equals  = tk.Button(window, text="=", padx=20, pady=20, command=calculate)
-btn_clear   = tk.Button(window, text="C", padx=20, pady=20, command=clear)
+# Texto do Resultado.
+texto_resultado = tk.Label(tela, text="", font=("arial", 20, "bold"), foreground="#ffffff", background="#323538", anchor="e")
+texto_resultado.place(x=20, y=50, width=200)
 
-# Posicionamento dos botões
-btn_7.grid(row=1, column=0)
-btn_8.grid(row=1, column=1)
-btn_9.grid(row=1, column=2)
-btn_add.grid(row=1, column=3)
+# Loop Numeros.
+for (numero, x, y) in botoes_numeros:
+    botao = tk.Button(janela, text=f"{numero}", font=("arial", 10, "normal"), background="#406285", foreground="#ffffff", relief="flat", highlightthickness=0, command=lambda num=numero: adicionar_numero(f"{num}"))
+    botao.place(x=x, y=y, width=50, height=50)
 
-btn_4.grid(row=2, column=0)
-btn_5.grid(row=2, column=1)
-btn_6.grid(row=2, column=2)
-btn_sub.grid(row=2, column=3)
+# Loop Operadores.
+for (operador, y) in botoes_operadores:
+    botao = tk.Button(janela, text=f"{operador}", font=("arial", 10, "normal"), background="#a36a00", foreground="#ffffff", relief="flat", highlightthickness=0, command=lambda ope=operador: adicionar_operador(f" {ope} "))
+    botao.place(x=210, y=y, width=50, height=50)
 
-btn_1.grid(row=3, column=0)
-btn_2.grid(row=3, column=1)
-btn_3.grid(row=3, column=2)
-btn_mult.grid(row=3, column=3)
+# Botão de Igual.
+botao = tk.Button(janela, text="=", font=("arial", 10, "normal"), background="#a36a00", foreground="#ffffff", relief="flat", highlightthickness=0, command=calcular)
+botao.place(x=150, y=340, width=50, height=50)
 
-btn_0.grid(row=4, column=0)
-btn_div.grid(row=4, column=1)
-btn_clear.grid(row=4, column=2)
-btn_equals.grid(row=4, column=3)
+# Botão Limpar/Clear
+botao = tk.Button(janela, text="C", font=("arial", 10, "normal"), background="#a36a00", foreground="#ffffff", relief="flat", highlightthickness=0, command=clear)
+botao.place(x=90, y=340, width=50, height=50)
 
-# Inicia o loop 
-window.mainloop()
+# Mainloop.
+janela.mainloop()
