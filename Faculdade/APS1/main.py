@@ -94,10 +94,10 @@ telefone_entry  = tk.Entry(janela, width=15)
 email_entry     = tk.Entry(janela, width=30)
 
 # Cria rótulos para os campos
-tk.Label(janela, text="Código:", font=("Inter", 12, "bold"), foreground="#000000", background="#767b80", anchor="e")    .grid(row=0, column=0, padx=10, pady=5)
-tk.Label(janela, text="Nome:", font=("Inter", 12, "bold"), foreground="#000000", background="#767b80", anchor="e")      .grid(row=1, column=0, padx=10, pady=5)
-tk.Label(janela, text="Telefone:", font=("Inter", 12, "bold"), foreground="#000000", background="#767b80", anchor="e")  .grid(row=2, column=0, padx=10, pady=5)
-tk.Label(janela, text="Email:", font=("Inter", 12, "bold"), foreground="#000000", background="#767b80", anchor="e")     .grid(row=3, column=0, padx=10, pady=5)
+tk.Label(janela, text="Código:",   font=("Inter", 12, "bold"), foreground="#000000", background="#767b80", anchor="e").grid(row=0, column=0, padx=10, pady=5)
+tk.Label(janela, text="Nome:",     font=("Inter", 12, "bold"), foreground="#000000", background="#767b80", anchor="e").grid(row=1, column=0, padx=10, pady=5)
+tk.Label(janela, text="Telefone:", font=("Inter", 12, "bold"), foreground="#000000", background="#767b80", anchor="e").grid(row=2, column=0, padx=10, pady=5)
+tk.Label(janela, text="Email:",    font=("Inter", 12, "bold"), foreground="#000000", background="#767b80", anchor="e").grid(row=3, column=0, padx=10, pady=5)
 
 # Posiciona os campos de entrada
 codigo_entry.grid(row=0, column=1)
